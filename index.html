@@ -1,1 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Khalil Pro 🛡️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-darker: #1e1f22; --bg-sidebar: #2b2d31; --bg-chat: #313338;
+            --bg-modifier: #35373c; --accent: #5865f2; --success: #23a559;
+            --nitro: #ff73fa; --text-main: #dbdee1; --text-muted: #949ba4;
+        }
+        * { box-sizing: border-box; font-family: 'gg sans', sans-serif; }
+        body, html { margin: 0; padding: 0; height: 100%; background: var(--bg-chat); color: var(--text-main); overflow: hidden; }
 
+        .app-container { display: flex; height: 100vh; width: 100vw; }
+
+        /* الأجزاء الجمالية */
+        .server-rail { width: 72px; background: var(--bg-darker); display: flex; flex-direction: column; align-items: center; padding: 12px 0; gap: 8px; flex-shrink: 0; }
+        .server-icon { width: 48px; height: 48px; background: var(--bg-chat); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; color: white; }
+        .server-icon:hover, .server-icon.active { border-radius: 30%; background: var(--accent); }
+
+        .sidebar { width: 240px; background: var(--bg-sidebar); display: flex; flex-direction: column; }
+        .header { height: 48px; padding: 0 16px; display: flex; align-items: center; font-weight: bold; border-bottom: 1px solid rgba(0,0,0,0.2); }
+        
+        .chat-area { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+        .message-list { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .msg-row { display: flex; gap: 16px; animation: popUp 0.3s ease; }
+        @keyframes popUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+        .msg-pfp { width: 40px; height: 40px; border-radius: 50%; background: var(--nitro); }
+        .msg-user { font-weight: bold; color: white; }
+        .msg-text { color: #dcddde; margin-top: 4px; }
+
+        .input-footer { padding: 0 20px 24px; position: relative; }
+        .input-box { background: #383a40; border-radius: 8px; padding: 11px; display: flex; align-items: center; gap: 10px; }
+        .input-box input { background: transparent; border: none; color: white; flex: 1; outline: none; }
+
+        .members-list { width: 240px; background: var(--bg-sidebar); padding: 20px 10px; border-left: 1px solid rgba(0,0,0,0.1); }
+        .rank-tag { font-size: 9px; padding: 2px 6px; border-radius: 10px; margin-left: 5px; border: 1px solid currentColor; }
+        .rank-dev { color: #00eeff; }
+
+        /* متجر النيترو */
+        #nitroUI { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; display: none; align-items: center; justify-content: center; }
+        .nitro-card { background: var(--bg-sidebar); padding: 40px; border-radius: 15px; text-align: center; border: 1px solid var(--nitro); }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="server-rail">
+        <div class="server-icon active"><i class="fa-brands fa-discord"></i></div>
+        <div class="server-icon" style="color:var(--nitro)" onclick="document.getElementById('nitroUI').style.display='flex'"><i class="fa-solid fa-gem"></i></div>
+    </div>
+
+    <div class="sidebar">
+        <div class="header">سيرفر خليل 🇩🇿</div>
+        <div style="flex:1; padding:10px;">
+            <div style="color:var(--text-muted); font-size:12px; font-weight:bold;">القنوات النصية</div>
+            <div style="color:white; padding:10px;"><i class="fa-solid fa-hashtag"></i> عام</div>
+        </div>
+        <div style="background:#232428; padding:10px; display:flex; align-items:center; gap:10px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:var(--accent);"></div>
+            <div id="u-name" style="font-weight:bold; font-size:12px;">Khalil_Chikhi</div>
+        </div>
+    </div>
+
+    <div class="chat-area">
+        <div class="header"># عام</div>
+        <div class="message-list" id="chat-flow">
+            <div class="msg-row">
+                <div class="msg-pfp"></div>
+                <div class="msg-content">
+                    <span class="msg-user">System Bot</span>
+                    <div class="msg-text">أهلاً بك يا خليل! السكريبت الآن شغال 100% بدون أخطاء. 🔥</div>
+                </div>
+            </div>
+        </div>
+        <div class="input-footer">
+            <div class="input-box">
+                <input type="text" id="chat-input" placeholder="اكتب رسالة...">
+            </div>
+        </div>
+    </div>
+
+    <div class="members-list">
+        <div style="color:var(--text-muted); font-size:11px; margin-bottom:10px;">المتصلين — 1</div>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:var(--nitro);"></div>
+            <div style="color:white; font-weight:bold;">خليل <span class="rank-tag rank-dev">Developer</span></div>
+        </div>
+    </div>
+</div>
+
+<div id="nitroUI" onclick="this.style.
+  </body>
+  /* --- الجزء الخامس: نظام الليفل (CSS) --- */
+        .level-bar-container {
+            background: rgba(0,0,0,0.3); height: 4px; width: 100%;
+            border-radius: 2px; margin-top: 5px; overflow: hidden;
+        }
+        .level-progress {
+            background: var(--success); height: 100%; width: 0%;
+            transition: width 0.5s ease;
+        }
+        .xp-pop {
+            position: absolute; right: 20px; top: 20px;
+            background: var(--accent); color: white; padding: 5px 10px;
+            border-radius: 20px; font-size: 10px; font-weight: bold;
+            animation: fadeOutUp 1s forwards; pointer-events: none;
+        }
+        @keyframes fadeOutUp {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-30px); }
+        }
+        .badge-list { display: flex; gap: 4px; margin-top: 5px; }
+        .badge-icon { font-size: 14px; color: #ffaa00; cursor: help; }
+  <script>
+    // تهيئة نظام الـ XP
+    let xp = 0;
+    let level = 1;
+    const xpToNextLevel = 100;
+
+    // إضافة شريط الليفل تحت اسم المستخدم
+    const userInfo = document.querySelector('.user-name-tag');
+    const levelDiv = document.createElement('div');
+    levelDiv.innerHTML = `
+        <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted); margin-top:4px;">
+            <span>Level <b id="lvl-num">1</b></span>
+            <span><b id="xp-num">0</b>/100 XP</span>
+        </div>
+        <div class="level-bar-container"><div id="xp-bar" class="level-progress"></div></div>
+    `;
+    userInfo.appendChild(levelDiv);
+
+    // إضافة أوسمة (Badges) للمبرمج خليل
+    const badges = document.createElement('div');
+    badges.className = 'badge-list';
+    badges.innerHTML = `
+        <i class="fa-solid fa-code badge-icon" title="برمج الموقع"></i>
+        <i class="fa-solid fa-shield-halved badge-icon" title="Admin" style="color:#ff4747"></i>
+        <i class="fa-solid fa-crown badge-icon" title="Owner" style="color:#ffcc00"></i>
+    `;
+    userInfo.parentElement.insertBefore(badges, userInfo.nextSibling);
+
+    // دالة زيادة الخبرة عند كل رسالة
+    function addXP() {
+        xp += 20;
+        if (xp >= xpToNextLevel) {
+            xp = 0;
+            level++;
+            alert(`مبروك يا خليل! طلعت لليفل ${level} 🎉💎`);
+            document.getElementById('lvl-num').innerText = level;
+        }
+        document.getElementById('xp-num').innerText = xp;
+        document.getElementById('xp-bar').style.width = (xp / xpToNextLevel * 100) + '%';
+        
+        // تأثير طيران الـ XP
+        const pop = document.createElement('div');
+        pop.className = 'xp-pop';
+        pop.innerText = '+20 XP';
+        document.body.appendChild(pop);
+        setTimeout(() => pop.remove(), 1000);
+    }
+
+    // ربط الزيادة مع الإرسال
+    input.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter' && input.value.trim() !== "") {
+            addXP(); // نزيدو الـ XP كل ما يكتب رسالة
+        }
+    });
+
+    console.log("تم تفعيل نظام الليفل والأوسمة بنجاح! 🆙👑");
+</script>
+  </body>
+  /* --- الجزء السادس: الأنشطة والبوتات (CSS) --- */
+        .activity-box {
+            margin-top: 10px; background: rgba(0,0,0,0.2);
+            border-radius: 8px; padding: 10px; display: flex; align-items: center; gap: 10px;
+        }
+        .activity-icon { width: 32px; height: 32px; border-radius: 4px; object-fit: cover; }
+        .activity-text { font-size: 11px; line-height: 1.2; }
+        .activity-title { font-weight: bold; color: white; display: block; }
+        
+        .bot-tag {
+            background: var(--accent); color: white; font-size: 9px;
+            padding: 1px 4px; border-radius: 3px; margin-left: 5px; font-weight: bold;
+        }
+        
+        /* تأثير الكتابة (Typing Indicator) */
+        .typing { font-size: 12px; color: var(--text-muted); padding: 5px 20px; height: 20px; }
+  <div id="typing-area" class="typing"></div>
+
+<script>
+    // 1. نظام النشاطات (Playing Activity) 🎮
+    const memberPanel = document.querySelector('.member-card');
+    const activityHtml = `
+        <div class="activity-box">
+            <img src="https://i.pinimg.com/originals/ab/02/cd/ab02cd934c5625470d04739178384999.png" class="activity-icon">
+            <div class="activity-text">
+                <span style="color:var(--text-muted); font-weight:bold; font-size:9px; text-transform:uppercase;">يلعب الآن</span>
+                <span class="activity-title">Minecraft: Algeria Edition</span>
+                <span>منذ 24 دقيقة</span>
+            </div>
+        </div>
+    `;
+    memberPanel.parentElement.insertAdjacentHTML('beforeend', activityHtml);
+
+    // 2. نظام البوتات والرد التلقائي 🤖
+    const bots = [
+        { name: "MEE6_Khalil", color: "#3498db", trigger: "سلام", reply: "وعليكم السلام يا أسطورة! واش راك اليوم؟ 🇩🇿" },
+        { name: "Music_Bot", color: "#e91e63", trigger: "لعب", reply: "راني نوجد لك أحسن أغنية راي! 🎵🎧" },
+        { name: "Security", color: "#2ecc71", trigger: "مساعدة", reply: "أنا هنا لحماية سيرفر خليل. استعمل الأوامر /help" }
+    ];
+
+    function showTyping(botName) {
+        const area = document.getElementById('typing-area');
+        area.innerText = `${botName} يكتب الآن...`;
+        setTimeout(() => area.innerText = "", 1500);
+    }
+
+    function botManager(userText) {
+        bots.forEach(bot => {
+            if (userText.includes(bot.trigger)) {
+                showTyping(bot.name);
+                setTimeout(() => {
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'msg-row';
+                    botDiv.innerHTML = `
+                        <div class="msg-pfp" style="background:${bot.color}"></div>
+                        <div class="msg-content">
+                            <span class="msg-user">${bot.name} <span class="bot-tag">BOT</span></span>
+                            <div class="msg-text">${bot.reply}</div>
+                        </div>
+                    `;
+                    flow.appendChild(botDiv);
+                    flow.scrollTop = flow.scrollHeight;
+                    // نزيدو XP لخليل لأنه يتفاعل مع البوتات!
+                    if(typeof addXP === "function") addXP();
+                }, 1600);
+            }
+        });
+    }
+
+    // ربط الرد التلقائي مع الإدخال
+    input.addEventListener('keypress', (e) => {
+        if(e.key === 'Enter' && input.value.trim() !== "") {
+            botManager(input.value);
+        }
+    });
+
+    // إضافة بوت ميني كرافت لقائمة الأعضاء
+    const mList = document.querySelector('.members-list');
+    mList.innerHTML += `
+        <div class="member-group" style="margin-top:15px;">البوتات — 3</div>
+        <div style="display:flex; align-items:center; gap:10px; opacity:0.8; margin-bottom:10px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:#3498db;"></div>
+            <div style="color:white; font-size:14px;">MEE6_Khalil <span class="bot-tag">BOT</span></div>
+        </div>
+    `;
+
+    console.log("تم تفعيل الأنشطة والبوتات الذكية! 🤖🎮");
+</script>
